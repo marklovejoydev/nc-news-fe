@@ -200,3 +200,14 @@ button:active {
 	z-index: 1;
 	border: 3px solid black;
 }
+.voteDownButton{
+	grid-area: 5/2;
+	width: 50%;
+	z-index: 1;
+	margin-left: 50%;
+}
+.voteUpButton{
+	grid-area: 5/2;
+	z-index: 1;
+	width: 50%;
+}
