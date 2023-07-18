@@ -30,13 +30,15 @@ export default function Article() {
 
   const handleUpVotes = () => {
     if (!isButtonClicked) {
+    const originalVote = currentVote - 1
     setVotes(votes + 1)
     setIsButtonClicked(true)
     patchArticleVotesUp(article_id) 
     .catch((error) => {
         console.log('Error while voting up:', error);
+        setVotes(votes)
+        alert('Something went wrong. Please try again later.')
         setIsButtonClicked(false)
-        setVotes(votes - 1)
       })
 }
 };
@@ -48,8 +50,9 @@ const handleDownVotes = () => {
     patchArticleVotesDown(article_id) 
     .catch((error) => {
         console.log('Error while voting down:', error);
+        setVotes(votes)
+        alert('Something went wrong. Please try again later.')
         setIsButtonClicked(false)
-        setVotes(votes + 1)
       })
 }
 };
