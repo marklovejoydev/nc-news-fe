@@ -33,6 +33,11 @@ export default function Article() {
     setVotes(votes + 1)
     setIsButtonClicked(true)
     patchArticleVotesUp(article_id) 
+    .catch((error) => {
+        console.log('Error while voting up:', error);
+        setIsButtonClicked(false)
+        setVotes(votes - 1)
+      })
 }
 };
 
@@ -41,6 +46,11 @@ const handleDownVotes = () => {
     setVotes(votes - 1)
     setIsButtonClicked(true)
     patchArticleVotesDown(article_id) 
+    .catch((error) => {
+        console.log('Error while voting down:', error);
+        setIsButtonClicked(false)
+        setVotes(votes + 1)
+      })
 }
 };
   if (isLoading) return <Loading />
