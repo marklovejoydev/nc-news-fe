@@ -1,29 +1,30 @@
 import React, { useState } from 'react'
 import { postComment } from '../articleApi'
 import { useParams } from 'react-router-dom';
-import {Link} from 'react-router-dom'
 
-export default function NewComment() {
+export default function NewComment({handleNewComment}) {
 const { article_id } = useParams();
   const [comment, setComment] = useState({
-    username: "",
+    username: "tickle122",
     body:"",
   })
-  const [showLink, setShowLink] = useState(false)
+
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleNewComment(comment)
     postComment(comment, article_id)
       .then(() => {
         setComment({
-          username: "",
+          username: "tickle122",
           body: "",
         });
         alert("Comment Posted");
-        setShowLink(true)
       })
       .catch((error) => {
         console.log('error in submit', error);
+        alert("Your comment could not be posted please try again later")
+        handleNewComment(null)
       });
   }
   const handleChange = (e) => {
@@ -35,16 +36,7 @@ const { article_id } = useParams();
     <div>
         <h1>New Comment</h1>
         <form className="comment_form" onSubmit={handleSubmit}>
-				<label>
-					Username:
-					<input
-						required
-						type="text"
-						onChange={handleChange}
-						name="username"
-						value={comment.username}
-					/>
-				</label>
+				
 				<label>
 					Comment:
 					<input
@@ -57,11 +49,8 @@ const { article_id } = useParams();
 				</label>
                 <button>Submit</button>
 			</form>
-            {showLink && (
-        <Link className="link" to={`/articles/${article_id}`}>
-          <button>Comments</button>
-        </Link>
-      )}
+            
+      
     </div>
   )
 }
