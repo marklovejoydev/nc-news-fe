@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getArticleById } from '../articleApi';
 import { useParams } from 'react-router-dom';
+import Loading from './Loading';
 
 export default function Article() {
   const [articleById, setArticleById] = useState();
@@ -17,9 +18,9 @@ export default function Article() {
       })
       
   }, []);
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />
 
-  
+  const formattedDateTime = new Date(articleById.created_at).toLocaleString();
 
   return (
     <section className='articleArea'>
@@ -29,7 +30,7 @@ export default function Article() {
       <p className='articleTopic'>Topic: {articleById.topic}</p>
       <p className='articleBody'>{articleById.body}</p>
       <p className='articleCommentCount'>comment count: {articleById.comment_count}</p>
-      <p className='DTG'>DTG: {articleById.created_at}</p>
+      <p className='DTG'>Created on: {formattedDateTime}</p>
       <p className='votes'>votes :{articleById.votes}</p>
       <img className='articleImg' src={articleById.article_img_url}></img>
         </div>

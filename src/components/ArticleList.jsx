@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getArticles } from '../requestApi';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 export default function ArticleList() {
 	const [articles, setArticles] = useState([]);
@@ -15,7 +16,7 @@ export default function ArticleList() {
 		
 	}, []);
   
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <Loading />
     return (
     
 		<main>
@@ -28,7 +29,7 @@ export default function ArticleList() {
 								<h3>Title: {title}</h3>
                                 <p>Author: {author}</p>
 								<p>Topic: {topic}</p>
-								<Link to={`/${article_id}`}>
+								<Link to={`/articles/${article_id}`}>
                                 <button>Read More</button>
 				  				</Link>
 							</li>
