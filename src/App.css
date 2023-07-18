@@ -196,3 +196,7 @@ button:active {
     background-color: #ecf0f1;
 }
 
+.no_comment{
+	z-index: 1;
+	border: 3px solid black;
+}

@@ -9,7 +9,7 @@ export default function Article() {
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
   const [comments, setComments] = useState();
-  const [showComments, setShowComments] = useState(false);
+  const [showComments, setShowComments] = useState(true);
 
   useEffect(() => {
     getArticleById(article_id)
@@ -21,13 +21,10 @@ export default function Article() {
 
   const onClickHandler = () => {
         getCommentById(article_id).then((res) => {
-          setComments(res.data);
-          
-        });
-      
+          setComments(res.data)
+          setShowComments(false);
+        });   
   }
-
-
   if (isLoading) return <Loading />
 
   const formattedDateTime = new Date(articleById.created_at).toLocaleString();
@@ -43,7 +40,7 @@ export default function Article() {
       <p className='DTG'>Created on: {formattedDateTime}</p>
       <p className='votes'>votes :{articleById.votes}</p>
       <img className='articleImg' src={articleById.article_img_url}></img>
-      <button className="button-4" role="button" onClick={onClickHandler}>{'Show Comments'}</button>
+      <button className="button-4" role="button" onClick={onClickHandler}>{'Comments'}</button>
         </div>
         {comments && <div id='commentsArea'><Comments comments={comments} /></div>}
     </section>
