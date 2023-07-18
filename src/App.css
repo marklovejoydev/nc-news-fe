@@ -5,12 +5,12 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	/* border: 1px solid red; */
+	border: 1px solid red;
 	font-family: Roboto, sans-serif;
 }
 
 body {
-	background-color: #f4eae6;
+	background-color: #d1c4c0;
 	max-width: 100%;
 }
 header {
@@ -54,4 +54,47 @@ header {
 
 .navLinks li:hover {
 	color: black;
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 20%, 20%, 20%, 20%, 20%,;
+	grid-template-columns: 30%, 30%, 15%, 15%;
+}
+
+.articleTitle {
+	grid-row: 1;
+	grid-column: 1/5;
+}
+
+.articleImg {
+	grid-area:  3 / 1 ;
+	z-index: 1;
+	width: 30vw;
+	height: 40vh;
+}
+.articleAuthor {
+	grid-area:  2 / 1  ;
+	z-index: 1;
+}
+.articleTopic {
+	grid-area:  4 / 1  ;
+	z-index: 1;
+}
+.articleBody {
+	grid-area:  2 / 2 / 4 / 4  ;
+	z-index: 1;
+	padding: 2rem;
+}
+.articleCommentCount {
+	grid-area:  4 / 3  ;
+	z-index: 1;
+}
+.DTG {
+	grid-area:  5 / 1  ;
+	z-index: 1;
+}
+.votes {
+	grid-area:  4 / 2  ;
+	z-index: 1;
 }
