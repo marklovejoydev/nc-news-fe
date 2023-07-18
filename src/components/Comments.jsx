@@ -1,7 +1,12 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+
 
 export default function Comments({comments}) {
+    const { article_id } = useParams()
     if (comments.length === 0) {
+
         return (
           <div>
             <h1>Comments</h1>
@@ -20,6 +25,9 @@ export default function Comments({comments}) {
   return (
     <div>
         <h1>comments</h1>
+        <Link className="link" to={`/articles/${article_id}/comments/newcomment`}>
+		<button>New Comment</button>				
+		</Link>
         <ul>
         {comments.map(({comment_id, body, author, votes}) => {            
 			return (
