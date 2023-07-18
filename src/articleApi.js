@@ -11,3 +11,9 @@ export const getArticleById = (article_Id) => {
 		return res;
 	});
 };
+
+export const getCommentById = (article_Id) => {
+	return myApi.get(`articles/${article_Id}/comments`).then((res) => {
+		return res
+	})
+}
