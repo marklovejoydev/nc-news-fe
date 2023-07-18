@@ -1,23 +1,24 @@
 import React from 'react'
-import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import { Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import ArticleList from './components/ArticleList'
+import Article from './components/Article'
 
 
 function App() {
-
   
-
   return (
     <>
-    <div className='appContainer'>
+    <main className='appContainer'>
       <Header />
       <Nav />
-      <ArticleList />
-    </div>
+      <Routes>
+        <Route path='/' element={<ArticleList />} />
+        <Route path='/articles/:article_id' element={<Article />} />
+      </Routes>
+    </main>
       
     </>
   )

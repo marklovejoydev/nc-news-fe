@@ -7,8 +7,8 @@ export default function Nav() {
 			<ul className="navLinks">
 				<li>
 					<p>Home</p>
-                    <p>Topics</p>
-                    <p>Profile</p>
+          <p>Topics</p>
+          <p>Profile</p>
 					
 				</li>				
 			</ul>
