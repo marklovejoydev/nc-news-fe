@@ -33,3 +33,13 @@ export const patchArticleVotesUp = (article_Id) => {
 		return res.data
 	  })
   };
+
+  export const postComment = (newComment, article_Id) => {
+	const postRequestBody = {
+		username:newComment.username,
+		body:newComment.body
+	}
+	return myApi.post(`/articles/${article_Id}/comments`, postRequestBody).then(({data})=> {
+		return data
+	})
+}
