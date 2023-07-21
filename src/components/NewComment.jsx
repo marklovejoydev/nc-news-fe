@@ -33,11 +33,11 @@ const { article_id } = useParams();
 
 
     return (
-    <div>
-        <h1>New Comment</h1>
+    <div className='content'>
+        <h2>New Comment</h2>
         <form className="comment_form" onSubmit={handleSubmit}>
 				
-				<label>
+				<label className='label'>
 					Comment:
 					<input
 						required

@@ -43,3 +43,10 @@ export const patchArticleVotesUp = (article_Id) => {
 		return data
 	})
 }
+
+export const getTopics = () => {
+	return myApi.get('/topics').then(({data})=>{
+
+		return data.topics
+	})
+}

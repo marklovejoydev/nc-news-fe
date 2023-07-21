@@ -19,19 +19,25 @@ export default function ArticleList() {
     if (isLoading) return <Loading />
     return (
     
-		<main>
+		<main className='content'>
 			<h2 className='subheader'>ALL ARTICLES</h2>
 			<section>
-				<ul>
+				<ul className='content'>
 					{articles.map(({article_id, title, author, topic}) => {
 						return (
-							<li className="list_article" key={article_id}>
+							<li className="container flex_div" key={article_id}>
 								<h3>Title: {title}</h3>
+							
                                 <p>Author: {author}</p>
+								
 								<p>Topic: {topic}</p>
+								
 								<Link to={`/articles/${article_id}`}>
                                 <button>Read More</button>
 				  				</Link>
+								  <div className="spacer"></div>
+								  <div className='article-meta'></div>
+								  <div className="spacer"></div>
 							</li>
 						);
 					})}
