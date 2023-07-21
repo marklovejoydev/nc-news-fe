@@ -16,8 +16,8 @@ export default function Comments({comments}) {
     if (comments.length === 0) {
 
         return (
-          <div>
-            <h1>Comments</h1>
+          <div className='content'>
+            <h2>Comments</h2>
             <ul>
               <li className="no_comment">
                 <div>
@@ -33,12 +33,14 @@ export default function Comments({comments}) {
         );
       }
   return (
-    <div>
-        <h1>comments</h1>
+    <div className='content'>
+        <h2>comments</h2>
+        <div className='content'>
+
         <button onClick={() => setShowNewComment(true)}>New Comment</button>
         {showNewComment && <NewComment handleNewComment={handleNewComment} />}
         {newComment && (
-        <div className="list_comment">
+          <div className="list_comment">
           <div className="comment-header">
             <h3 className="comment-author">Author: {newComment.username}</h3>
           </div>
@@ -46,12 +48,15 @@ export default function Comments({comments}) {
             <p>{newComment.body}</p>
             <button type="button">Vote up</button>
           </div>
+          
         </div>
         )}
         <ul>
         {comments.map(({comment_id, body, author, votes}) => {            
-			return (
-				<li className="list_comment" key={comment_id}>
+          return (
+            <div key={comment_id}>
+
+            <li className="list_comment" >
                     <div className='comment-header'>
                     <h3 className="comment-author">Author: { author }</h3>
 					<p>
@@ -61,12 +66,18 @@ export default function Comments({comments}) {
                     <div className='comment-body'>
                     <p>{body}</p>
                     <button type="button">Vote up</button>
-                    </div>
+                    </div>        
 				</li>
+        <div className="spacer"></div>
+        </div>
+        
 				);
 			})}
         </ul>
+        
+      </div>
        
     </div>
+    
   )
 }

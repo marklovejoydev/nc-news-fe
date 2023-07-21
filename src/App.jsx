@@ -7,6 +7,8 @@ import ArticleList from './components/ArticleList'
 import Article from './components/Article'
 import NewComment from './components/NewComment'
 import Comments from './components/Comments'
+import Topic from './components/Topic'
+import SingleTopic from './SingleTopic'
 
 
 function App() {
@@ -15,12 +17,17 @@ function App() {
     <>
     <main className='appContainer'>
       <Header />
-      <Nav />
+      <div className='article-meta'>
+
+      <Nav className='nav-block'/>
+      </div>
       <Routes>
         <Route path='/' element={<ArticleList />} />
         <Route path='/articles/:article_id' element={<Article />} />
         <Route path='/articles/:article_id' element={<Comments />} />
         <Route path='/articles/:article_id/comments/newcomment' element={<NewComment />} />
+        <Route path='/topics' element={<Topic />}/>
+        <Route path='/topics/:topic' element={<SingleTopic />}/>
       </Routes>
     </main>
       

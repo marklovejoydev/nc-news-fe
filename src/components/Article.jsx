@@ -61,7 +61,7 @@ const handleDownVotes = () => {
   const formattedDateTime = new Date(articleById.created_at).toLocaleString();
     const currentVote = articleById.votes
   return (
-    <section className='articleArea'>
+    <section className='content'>
         <div className='container'>
       <h2 className='articleTitle'>{articleById.title}</h2>
       <p className='articleAuthor'>{articleById.author}</p>

@@ -43,3 +43,16 @@ export const patchArticleVotesUp = (article_Id) => {
 		return data
 	})
 }
+
+export const getTopics = () => {
+	return myApi.get('/topics').then(({data})=>{
+
+		return data.topics
+	})
+}
+export const getArticleByTopic = (searchTerm) => {
+	return myApi.get(`/articles?topic=${searchTerm}`).then(({ data }) => {
+		console.log(data.articles)
+		return data.articles;
+	});
+};
