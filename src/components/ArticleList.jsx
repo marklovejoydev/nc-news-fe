@@ -36,12 +36,12 @@ export default function ArticleList() {
 			<section>
     		<Expanding>
 			<div className="spacer"></div>
-    		<button onClick={() => setSortOrder('created_at', 'ASC')}>Sort by Date (ASC)</button>
-      		<button onClick={() => setSortOrder('created_at', 'DESC')}>Sort by Date (DESC)</button>
-      		<button onClick={() => setSortOrder('comment_count', 'ASC')}>Sort by Comment Count (ASC)</button>
-      		<button onClick={() => setSortOrder('comment_count', 'DESC')}>Sort by Comment Count (DESC)</button>
-      		<button onClick={() => setSortOrder('votes', 'ASC')}>Sort by Votes (ASC)</button>
-      		<button onClick={() => setSortOrder('votes', 'DESC')}>Sort by Votes (DESC)</button>
+    		<button onClick={() => setSortOrder('created_at', 'ASC')}>Date (ASC)</button>
+      		<button onClick={() => setSortOrder('created_at', 'DESC')}>Date (DESC)</button>
+      		<button onClick={() => setSortOrder('comment_count', 'ASC')}>Comment Count (ASC)</button>
+      		<button onClick={() => setSortOrder('comment_count', 'DESC')}>Comment Count (DESC)</button>
+      		<button onClick={() => setSortOrder('votes', 'ASC')}>Votes (ASC)</button>
+      		<button onClick={() => setSortOrder('votes', 'DESC')}>Votes (DESC)</button>
 			</Expanding>
   			</section>
 			<section>
