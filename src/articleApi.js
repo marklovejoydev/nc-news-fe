@@ -50,9 +50,3 @@ export const getTopics = () => {
 		return data.topics
 	})
 }
-export const getArticleByTopic = (searchTerm) => {
-	return myApi.get(`/articles?topic=${searchTerm}`).then(({ data }) => {
-		console.log(data.articles)
-		return data.articles;
-	});
-};

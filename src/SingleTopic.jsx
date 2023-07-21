@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getArticleByTopic } from './articleApi'
 import Loading from './components/Loading'
 import { Link } from 'react-router-dom'
+import { getArticles } from './requestApi'
 
 
 export default function SingleTopic() {
@@ -11,7 +11,7 @@ export default function SingleTopic() {
  const [isLoading, setIsLoading] = useState(true)
  
  useEffect(()=>{
-    getArticleByTopic(topic).then((res)=>{
+    getArticles(topic).then((res)=>{
         setTopicArticles(res)
         setIsLoading(false)
     })
