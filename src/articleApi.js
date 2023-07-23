@@ -50,3 +50,8 @@ export const getTopics = () => {
 		return data.topics
 	})
 }
+export const deleteComment = (comment_id) => {
+	return myApi.delete(`/comments/${comment_id}`).then((res) => {
+	  return res.data;
+	});
+  };

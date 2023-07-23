@@ -13,7 +13,7 @@ export default function Nav() {
 				Topics
 				</Link>
         
-          <p>Profile</p>
+          <p className='Username'>Username : Tickle122</p>
 					
 				</li>				
 			</ul>
