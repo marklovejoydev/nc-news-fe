@@ -12,13 +12,18 @@ export default function Article() {
   const [showComments, setShowComments] = useState(true);
   const [votes, setVotes] = useState(0)
   const [isButtonClicked, setIsButtonClicked] = useState(false)
-    
+  const [apiError, setApiError] = useState(null)
+
   useEffect(() => {
     getArticleById(article_id)
       .then((res) => {
         setArticleById(res.data);
         setIsLoading(false);       
-      })
+      }).catch((error)=>{
+        setApiError(error)
+        console.log(error.response.status)
+        console.log(error.response.data.msg)
+    })
   }, []);
 
   const onClickHandler = () => {
@@ -57,7 +62,14 @@ const handleDownVotes = () => {
 }
 };
   if (isLoading) return <Loading />
-
+  if(apiError){
+        return (
+            <ErrorPage
+            errorStatus={apiError.response.status}
+            errorMessage={apiError.response.data.msg}
+            />
+        )
+    }
   const formattedDateTime = new Date(articleById.created_at).toLocaleString();
     const currentVote = articleById.votes
   return (

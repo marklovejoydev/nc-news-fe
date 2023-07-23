@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getTopics } from '../articleApi';
+import ErrorPage from './ErrorPage';
 
 export default function Topic() {
 	const [topics, setTopics] = useState([])
-
+    const [apiError, setApiError] = useState(null)
 	useEffect(() => {
 		getTopics().then((res) => {
 			setTopics(res);
-		});
+		}).catch((error)=>{
+            setApiError(error)
+            console.log(error.response.status)
+            console.log(error.response.data.msg)
+        })
 	}, []);
+    if(apiError){
+        return (
+            <ErrorPage
+            errorStatus={apiError.response.status}
+            errorMessage={apiError.response.data.msg}
+            />
+        )
+    }
 return(
     <main className='content'>
     <div className='topicHeader'>

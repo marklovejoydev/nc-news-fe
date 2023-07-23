@@ -9,7 +9,8 @@ export default function ArticleList() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [sortQuery, setSortQuery] = useState('created_at:ASC'); // Initialize with a default sorting
+  const [sortQuery, setSortQuery] = useState('created_at:ASC'); 
+  const [apiError, setApiError] = useState(null)
 
   useEffect(() => {
     getArticles(null, ...sortQuery.split(':'))
@@ -17,8 +18,11 @@ export default function ArticleList() {
         setArticles(res);
         setIsLoading(false);
       })
-      .catch((error) => {
-        console.error('Error fetching articles:', error);
+      .catch((error)=>{
+        setApiError(error)
+        console.log(error.response.status)
+        console.log(error.response.data.msg)
+    
         setIsLoading(false);
       });
   }, [sortQuery]);
@@ -43,7 +47,14 @@ export default function ArticleList() {
   };
 
   if (isLoading) return <Loading />;
-
+  if(apiError){
+	return (
+		<ErrorPage
+		errorStatus={apiError.response.status}
+		errorMessage={apiError.response.data.msg}
+		/>
+	)
+}
   return (
     <main className='content'>
       <h2 className='topicHeader'>ALL ARTICLES</h2>

@@ -9,6 +9,7 @@ import NewComment from './components/NewComment'
 import Comments from './components/Comments'
 import Topic from './components/Topic'
 import SingleTopic from './SingleTopic'
+import ErrorPage from './components/ErrorPage'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/articles/:article_id/comments/newcomment' element={<NewComment />} />
         <Route path='/topics' element={<Topic />}/>
         <Route path='/topics/:topic' element={<SingleTopic />}/>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </main>
       

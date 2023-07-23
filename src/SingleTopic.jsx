@@ -37,7 +37,7 @@ export default function SingleTopic() {
   }, [topic, searchParams]);
 
   useEffect(() => {
-    // Sort the articles when the API call has been made and articles are updated
+    
     if (topicArticles.length > 0 && sortQuery) {
       sortArticles();
     }
