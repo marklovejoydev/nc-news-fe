@@ -79,7 +79,7 @@ const handleDownVotes = () => {
       <img className='articleImg' src={articleById.article_img_url}></img>
       <button className="button-4" role="button" onClick={onClickHandler}>{'Comments'}</button>
         </div>
-        {comments && <div id='commentsArea'><Comments comments={comments} /></div>}
+        {comments && <div id='commentsArea'><Comments comments={comments} setComments={setComments} /></div>}
     </section>
   );
 }
